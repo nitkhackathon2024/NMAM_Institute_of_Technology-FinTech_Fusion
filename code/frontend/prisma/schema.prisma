@@ -53,11 +53,13 @@ model User {
   sessions      Session[]
 
   //extras
-  college       String?
-  skills        String[]
-  learningGoals String[]
-  branch        String?
-  yearOfStudy   Int?
+  college           String?
+  skills            String[]
+  learningGoals     String[]
+  branch            String?
+  yearOfStudy       Int?
+  Connections       Connections[]
+  ConnectionRequest ConnectionRequest[]
 
   @@map("users")
 }
@@ -69,4 +71,18 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verification_tokens")
+}
+
+model Connections {
+  id          String @id @default(cuid())
+  userId      String
+  connections User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ConnectionRequest {
+  id         String  @id @default(cuid())
+  status     Boolean @default(false)
+  fromUserId String
+  toUserId   String
+  toUser     User    @relation(fields: [toUserId], references: [id], onDelete: Cascade)
 }
