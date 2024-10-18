@@ -74,9 +74,10 @@ model VerificationToken {
 }
 
 model Connections {
-  id          String @id @default(cuid())
-  userId      String
-  connections User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String   @id @default(cuid())
+  userId            String
+  connections       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cuis String[] //all the connected users id list
 }
 
 model ConnectionRequest {

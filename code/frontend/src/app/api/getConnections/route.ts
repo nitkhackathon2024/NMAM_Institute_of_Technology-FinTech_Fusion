@@ -7,10 +7,19 @@ export async function GET(request:Request){
     const data=await prisma.user.findFirst({
         where:{
             email:userEmail
-        },
-        include:{
-            Connections:true
         }
     })
-    return new Response(JSON.stringify(data))
+    const connections=await prisma.connections.findMany({
+        where:{
+            userId:data?.id
+        },select:{
+            cuis:true
+        }
+    })
+    const user=await prisma.user.findMany({
+        where:{
+            id: { in: connections.map((c) => c.cuis).flat() }
+        }
+    })
+    return new Response(JSON.stringify(user))
 }
