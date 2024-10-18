@@ -1,6 +1,7 @@
 "use session"
 import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
+import Link from "next/link"
 
 export default function GetConnections(){
     const [users,setUsers]=useState<{name:string;id:string}[]>([])
@@ -17,11 +18,11 @@ export default function GetConnections(){
         getUsers()
     },[])
     return(
-        <>
+        <div className="">
             <p>Connections : </p>
             {users.length > 0 && users.map((user,i)=>{
-                return <div key={i}><p>{user.name}</p></div>
+                return <div key={i} className="flex"><p>{user.name}</p><Link href="/studyRoom" className="border border-white p-2 m-2">Join study room</Link></div>
             })}
-        </>
+        </div>
     )
 }
