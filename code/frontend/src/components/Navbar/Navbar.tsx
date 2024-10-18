@@ -6,10 +6,19 @@ export default function Navbar() {
   const userName = session?.user?.name;
   return (
     <>
-      <nav>This is navbar</nav>
-      {/* <SignIn /> */}
-      <p>{userName}</p>
-      <button onClick={() => signIn("google")}>SignIn</button>
+      <nav className="flex flex-wrap border border-white">
+        This is navbar
+        {session ? (
+          <div>
+            <p>{userName}</p>
+            <button onClick={() => signOut()}>SignOut</button>
+          </div>
+        ) : (
+          <div>
+            <button onClick={() => signIn("google")}>SignIn</button>
+          </div>
+        )}
+      </nav>
     </>
   );
 }
