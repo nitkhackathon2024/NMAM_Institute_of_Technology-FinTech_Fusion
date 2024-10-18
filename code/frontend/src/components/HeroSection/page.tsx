@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function HeroSection() {
   return (
     <>
-    <div className="sm:flex p-10 lg:p-20 md:space-x-10 md:mt-20 lg:mt-44">
+    <div className="sm:flex p-10 lg:p-20 md:space-x-10 mt-44">
       <div>
         <h1 className=" text-[4rem]">
           Skill <span className="text-green-700 underline">Sphere</span>

@@ -196,7 +196,7 @@ export default function UserDetails() {
             onChange={(e) => setNewSkill(e.target.value)}
             className="py-2 px-3 rounded-3xl text-black"
           />
-          <button onClick={addSkill}>Add skill</button>
+          <button onClick={addSkill} className="bg-green-700 px-2 py-3 rounded-3xl ml-2">Add skill</button>
           <br />
           <br />
         </div>
@@ -227,7 +227,7 @@ export default function UserDetails() {
             onChange={(e) => setNewLearningSkill(e.target.value)}
             className="py-2 px-3 rounded-3xl text-black"
           />
-          <button onClick={addLearningSkill}>Add skill</button>
+          <button onClick={addLearningSkill} className="bg-green-700 px-2 py-3 rounded-3xl ml-2">Add skill</button>
         </div>
       </div>
     </div>
