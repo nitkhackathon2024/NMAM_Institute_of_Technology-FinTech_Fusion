@@ -33,18 +33,22 @@ export default function FindPeople() {
         },
       }
     );
-    console.log(response)
+    console.log(response);
   };
 
   return (
     <div>
-      <p>
-        Find people who align with your interest click on serch now to begin
-      </p>
-      <button onClick={findMatch} className="p-4 bg-blue-400 rounded-sm">
-        Search Now
-      </button>
-      <div className="w-fit">
+      <div className="md:flex items-center text-2xl justify-center md:space-x-4">
+        <p>
+          Find people who align with your interest click on serch now to begin
+        </p>
+        <button onClick={findMatch} className="p-4 bg-green-700 hover:bg-green-800 hover:scale-105 transition rounded-sm">
+          Search Now
+        </button>
+      </div>
+        <p className="text-md text-center">(Please update your profile with your skills before searching)</p>
+
+      <div className="w-fit m-auto">
         {users.length > 0 &&
           users.map((user, i) => {
             return (
@@ -60,7 +64,7 @@ export default function FindPeople() {
                 />
                 <p>{user.name}</p>
                 <button
-                  className="bg-blue-500 p-2"
+                  className="bg-green-500 p-2"
                   onClick={() => connectUser(user.email)}
                 >
                   follow

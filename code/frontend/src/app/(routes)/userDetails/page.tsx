@@ -1,8 +1,6 @@
 "use client";
-import { resolveNaptr } from "dns";
 import { useSession } from "next-auth/react";
-import { headers } from "next/headers";
-import { useActionState, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function UserDetails() {
   const { data: session, status } = useSession();
@@ -30,7 +28,6 @@ export default function UserDetails() {
       },
     });
     const data = await response.json();
-    console.log(data);
     setUserData([data]);
   };
 
@@ -122,14 +119,14 @@ export default function UserDetails() {
   }
 
   if (!session) {
-    return <h1>Please signIn to continue</h1>;
+    return <h1 className="text-3xl mt-44 text-center">Please signIn to continue</h1>;
   }
 
   return (
     <div>
-      <p className="text-center text-2xl">User Details</p>
+      <p className="text-center text-4xl mt-40">User Details</p>
       <br />
-      <div className="w-fit m-auto lg:flex lg:space-x-5">
+      <div className="w-fit m-auto lg:flex lg:space-x-5 lg:mt-20">
         <div>
           <label htmlFor="skills">My info</label>
           <br />
@@ -152,8 +149,9 @@ export default function UserDetails() {
           />
           <br />
           <br />
-          <label htmlFor="year">Year of study : </label>
-          <p>{userData[0]?.yearOfStudy}</p>
+          <label htmlFor="year">Year of study : {userData[0]?.yearOfStudy}</label>
+          <br />
+          <br />
           <select
             className="text-black"
             value={year ?? userData[0]?.yearOfStudy}
@@ -178,7 +176,7 @@ export default function UserDetails() {
             return (
               <div
                 key={index}
-                className="text-white border border-white py-2 px-3 rounded-md m-2"
+                className="text-white border border-white py-2 px-3 rounded-md m-2 flex justify-between items-center"
               >
                 {skill}{" "}
                 <button
@@ -209,9 +207,9 @@ export default function UserDetails() {
             return (
               <div
                 key={index}
-                className="text-white border border-white py-2 px-3 rounded-md m-2"
+                className="text-white border border-white py-2 px-3 rounded-md m-2 flex justify-between items-center"
               >
-                {skill}{" "}
+                {skill}
                 <button
                   onClick={() => deleteLearning(index)}
                   className="bg-red-500 text-black p-2"
@@ -221,9 +219,6 @@ export default function UserDetails() {
               </div>
             );
           })}
-          <label htmlFor="learnSkill">
-            Enter the skills you would like to learn
-          </label>
           <br />
           <input
             type="text"

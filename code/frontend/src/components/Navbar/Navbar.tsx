@@ -9,10 +9,10 @@ export default function Navbar() {
   const imageUrl = session?.user?.image;
 
   return (
-    <>
-      <nav className="flex flex-wrap border border-white justify-between items-center px-4 py-3">
+    <div className="fixed w-full top-5">
+      <nav className="flex flex-wrap border border-green-700 justify-between items-center px-4 py-3 m-5 rounded-2xl bg-black">
         <Link href="/">
-          <p>E Learning Platform</p>
+          <p className="text-xl">Skill Sphere</p>
         </Link>
         {session ? (
           <Link href="/userDetails">
@@ -44,6 +44,6 @@ export default function Navbar() {
           </div>
         )}
       </nav>
-    </>
+    </div>
   );
 }

@@ -37,13 +37,15 @@ export default function ConnectionRequests() {
   }, []);
 
   return (
-    <div>
+    <div className="text-xl border border-green-700 w-fit p-8 rounded-md bg-green-950 m-10">
+      <p className="text-center font-bold">Connection Requests : </p>
+      <hr className="my-5" />
       {users &&
         users.map((user, i) => {
           return (
-            <div key={i}>
+            <div key={i} className="flex justify-between items-center">
               <p>{user.name}</p>
-              <button onClick={() => acceptConnection(user.id)}>accept</button>
+              <button onClick={() => acceptConnection(user.id)} className="border border-white p-2 m-2">accept</button>
             </div>
           );
         })}
