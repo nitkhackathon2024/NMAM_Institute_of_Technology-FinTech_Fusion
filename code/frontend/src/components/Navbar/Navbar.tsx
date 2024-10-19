@@ -36,7 +36,7 @@ export default function Navbar() {
         ) : (
           <div>
             <button
-              onClick={() => signIn("google")}
+              onClick={() => signIn()}
               className="bg-green-400 px-3 py-2 rounded-md"
             >
               SignIn
