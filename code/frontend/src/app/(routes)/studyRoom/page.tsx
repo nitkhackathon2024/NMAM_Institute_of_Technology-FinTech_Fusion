@@ -50,7 +50,7 @@ export default function StudyRoom() {
     <div className="mt-44">
       <h1 className="text-3xl m-10">Study room</h1>
       <div className="md:grid grid-cols-10 px-10">
-        <div className="col-span-3 mt-[250px]">
+        <div className="col-span-3 md:mt-[250px] max-md:hidden">
           <input
             type="text"
             placeholder="Enter a message"
@@ -89,6 +89,23 @@ export default function StudyRoom() {
               </div>
             );
           })}
+        </div>
+        <div className="col-span-3 mt-8 md:hidden">
+          <input
+            type="text"
+            placeholder="Enter a message"
+            value={message}
+            onChange={(e) => {
+              setMessage(e.target.value);
+            }}
+            className="text-black px-2 py-3 rounded-3xl"
+          />
+          <button
+            onClick={sendMessage}
+            className="bg-green-700 py-3 px-2 ml-4 rounded-2xl"
+          >
+            Send
+          </button>
         </div>
       </div>
     </div>
